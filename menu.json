@@ -1,0 +1,56 @@
+[
+  {
+    "icon": "/assets/images/feather-home.svg",
+    "alt": "home icon",
+    "text_he": "סטאטוס מערכת",
+    "text_en": "System Status"
+  },
+  {
+    "icon": "/assets/images/feather-users.svg",
+    "alt": "users icon",
+    "text_he": "אנשי קשר",
+    "text_en": "Contacts"
+  },
+  {
+    "icon": "/assets/images/awesome-reply.svg",
+    "alt": "reply icon",
+    "text_he": "מענה אוטומטי",
+    "text_en": "Auto Reply"
+  },
+  {
+    "icon": "/assets/images/headphone.svg",
+    "alt": "headphone icon",
+    "text_he": "נציגים",
+    "text_en": "Representatives"
+  },
+  {
+    "icon": "/assets/images/feather-tag.svg",
+    "alt": "tag icon",
+    "text_he": "תיוגים",
+    "text_en": "Tags"
+  },
+  {
+    "icon": "/assets/images/feather-layers.svg",
+    "alt": "layers icon",
+    "text_he": "מחלקות",
+    "text_en": "Departments"
+  },
+  {
+    "icon": "/assets/images/feather-phone.svg",
+    "alt": "phone icon",
+    "text_he": "ספר טלפונים",
+    "text_en": "Phonebook"
+  },
+  {
+    "icon": "/assets/images/feather-bell.svg",
+    "alt": "bell icon",
+    "text_he": "תזכורות",
+    "text_en": "Reminders"
+  },
+  {
+    "icon": "/assets/images/feather-user.svg",
+    "alt": "user icon",
+    "text_he": "משתמשים",
+    "text_en": "Users"
+  }
+]

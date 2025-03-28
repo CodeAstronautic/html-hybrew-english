@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+ 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Application</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+ 
+<body>
+    <div class="container-fluid chat-container">
+        <div class="d-flex">
+            <div class="col-lg-3 sidebar p-0 bg-white border-end d-lg-block d-none">
+                <div class="p-3 text-center border bg-white border-top-0 border-end-0">
+                    <img src="assets\images\logo.svg" class="desktop-logo" alt="Profile">
+                </div>
+                <div class="p-3">
+                    <div>
+                        <div class="input-group">
+                            <input type="text" class="form-control border-0 fw-medium"
+                                placeholder="Search by name or number">
+                            <span class="input-group-text bg-white border-0 ">
+                                <i class="fas fa-search text-muted"></i>
+                            </span>
+                        </div>
+                    </div>
+ 
+                    <div>
+                        <div class="nav custom-tabs thin-scrollbar">
+                            <div><a class="nav-link active" href="#">everything</a></div>
+                            <div><a class="nav-link" href="#">Not called</a></div>
+                            <div><a class="nav-link" href="#">Favorites</a></div>
+                            <div><a class="nav-link" href="#">Groups</a></div>
+                            <div><a class="nav-link" href="#">Labels <i class="fas fa-chevron-down"></i></a></div>
+                        </div>
+ 
+                        <div class="tab-container">
+                            <button class="custom-btn rounded-top-3">My Conversations</button>
+                            <button class="custom-btn2">All conversations</button>
+                        </div>
+                    </div>
+                    <div class="contact-list overflow-auto custom-scrollbar d-flex flex-column" id="contactList">
+                        <!-- Contacts will be injected here -->
+                    </div>
+ 
+                    <div class="pt-3">
+                        <button class="custom-btn rounded-3">
+                            <i class="fas fa-plus me-1"></i> New conversation
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-9 col-12 p-0 d-flex flex-column">
+                <div class="chat-header d-lg-flex d-none align-items-center justify-content-between">
+                    <div class="header-btn flex-grow-1 d-flex gap-3 flex-wrap">
+                        <div><a class="nav-link d-flex gap-2" href="#"><img src="assets\images\feather-edit.svg" alt="edit icon">Update contact details</a></div>
+                        <div><a class="nav-link d-flex gap-2" href="#"><img src="assets\images\feather-tag.svg" alt="tag icon">Call tagging</a></div>
+                        <div><a class="nav-link d-flex gap-2" href="#"><img src="assets\images\headphone.svg" alt="headphone icon">Call Associate CPA Yoram Fisher, Tali</a></div>
+                        <div><a class="nav-link d-flex gap-2" href="#"><img src="assets\images\pin.svg" alt="pin icon">Call forwarding</a></div>
+                        <div><a class="nav-link d-flex gap-2" href="#"><img src="assets\images\feather-bell.svg" alt="bell icon">Add a reminder</a></div>
+                    </div>
+                    <div class="header-container d-flex justify-content-between align-items-center position-relative border-start" data-bs-toggle="dropdown" aria-expanded="false">
+                        <div class="header-contact d-flex justify-content-between align-items-center">
+                           <div class="d-flex gap-2 align-items-center">
+                                <div>
+                                    <img src="/assets/images/awesome-whatsapp.svg" alt="whatsapp icon">
+                                </div>
+                                <div>
+                                    <h6 class="mb-0 fw-normal text-black">Ziv Shifer</h6>
+                                    <small class="text-black">053-3028400</small>
+                                </div>
+                           </div>
+                            <i class="fas fa-chevron-down"></i>
+                            <ul id="dropdownMenu" class="dropdown-menu dropdown-menu-end header-dropdown w-100 position-absolute m-0 p-0 rounded-0 border-0"></ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-lg-none d-flex flex-column bg-white">
+                  <div class="d-flex align-items-center w-100 justify-content-between border-bottom">
+                    <div class="header-icon h-100 flex justify-content-center align-items-center border-end">
+                      <div class="w-100 h-100 d-flex justify-content-center align-items-center" data-bs-toggle="offcanvas" data-bs-target="#chatSidebar">
+                        <img src="/assets/images/chat.svg" alt="chat icon" > 
+                      </div>
+                    </div>
+                    <div class="justify-content-between align-items-center mobile-header">
+                      <div class="text-center">
+                        <img src="assets\images\logo.svg" alt="Profile" class="mobile-logo">
+                      </div>
+                    </div>
+                    <div class="header-icon h-100 flex justify-content-center align-items-center border-start">
+                      <div class="w-100 h-100 d-flex justify-content-center align-items-center" data-bs-toggle="offcanvas" data-bs-target="#sidebar">
+                        <img src="/assets/images/feather-user.svg" alt="user icon" > 
+                    </div>
+                    </div>
+                  </div>
+                  <div class="offcanvas offcanvas-end user-container" tabindex="-1" id="sidebar"
+                        aria-labelledby="sidebarLabel">
+                        <div class="offcanvas-header p-0 position-absolute user-menu">
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                                aria-label="Close"></button>
+                        </div>
+                        <div class="offcanvas-body p-0">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <ul id="menu-list" class="w-100 m-0 p-0 rounded-0 border-0"></ul>
+                            </div>
+                        </div>
+                 </div>
+                 <div class="offcanvas offcanvas-start chatbar-container" tabindex="-1" id="chatSidebar"
+                        aria-labelledby="chatSidebarLabel">
+                        <div class="offcanvas-header p-0 position-absolute chat-menu">
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                                aria-label="Close"></button>
+                        </div>
+                        <div class="offcanvas-body p-0">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="p-3 w-100">
+                                    <div>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control border-0 fw-medium p-2 fs-6"
+                                                placeholder="Search by name or number">
+                                            <span class="input-group-text bg-white border-0 ">
+                                                <i class="fas fa-search text-muted"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                 
+                                    <div>
+                                        <div class="nav custom-tabs thin-scrollbar">
+                                            <div><a class="nav-link active" href="#">everything</a></div>
+                                            <div><a class="nav-link" href="#">Not called</a></div>
+                                            <div><a class="nav-link" href="#">Favorites</a></div>
+                                            <div><a class="nav-link" href="#">Groups</a></div>
+                                            <div><a class="nav-link" href="#">Labels <i class="fas fa-chevron-down"></i></a></div>
+                                        </div>
+                 
+                                        <div class="tab-container">
+                                            <button class="custom-btn rounded-top-3">My Conversations</button>
+                                            <button class="custom-btn2">All conversations</button>
+                                        </div>
+                                    </div>
+                                    <div class="contact-list overflow-auto custom-scrollbar d-flex flex-column" id="contactChatList">
+                                        <!-- Contacts Chat will be injected here -->
+                                    </div>
+                 
+                                    <div class="pt-3">
+                                        <button class="custom-btn rounded-3">
+                                            <i class="fas fa-plus me-1"></i> New conversation
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                 </div>
+                  <div class="header-container d-flex justify-content-between align-items-center position-relative" data-bs-toggle="dropdown" aria-expanded="false">
+                        <div class="header-contact w-100 d-flex justify-content-between align-items-center">
+                           <div class="d-flex align-items-center">
+                                    <h6 class="mb-0 fw-normal text-black">Ziv Shifer</h6>
+                           </div>
+                            <i class="fas fa-chevron-down"></i>
+                            <ul class="dropdown-menu dropdown-menu-end header-dropdown w-100 position-absolute m-0 p-0 rounded-0 border-0">
+                              <div class="header-btn d-flex flex-grow-1 gap-lg-3 gap-2 flex-column">
+                                <div><a class="nav-link d-flex gap-2" href="#"><img src="assets\images\feather-edit.svg" alt="edit icon">Update contact details</a></div>
+                                <div><a class="nav-link d-flex gap-2" href="#"><img src="assets\images\feather-tag.svg" alt="tag icon">Call tagging</a></div>
+                                <div><a class="nav-link d-flex gap-2" href="#"><img src="assets\images\headphone.svg" alt="headphone icon">Call Associate CPA Yoram Fisher, Tali</a></div>
+                                <div><a class="nav-link d-flex gap-2" href="#"><img src="assets\images\pin.svg" alt="pin icon">Call forwarding</a></div>
+                                <div><a class="nav-link d-flex gap-2" href="#"><img src="assets\images\feather-bell.svg" alt="bell icon">Add a reminder</a></div>
+                            </div>
+                            </ul>
+                        </div>
+                  </div>
+                </div>
+                
+                <div class="chat-body">
+                    <div class="chat-messages d-flex flex-column pt-3">
+                        <div class="message sent">
+                            <div class="message-content">
+                                <p class="mb-0">Hello Israel, how are you?</p>
+                            </div>
+                            <div class="message-time text-end mt-2">01/01/2025 13:33</div>
+                        </div>
+    
+                        <div class="message received">
+                            <div class="message-content">
+                                <p class="mb-0">Hello everyone, I would be happy to answer.</p>
+                            </div>
+                            <div class="message-time mt-2"><span class="text-black fw-medium ms-2">Israel Israeli</span> 01/01/2025 13:33 </div>
+                        </div>
+
+                        <div class="text-center my-3">
+                            <div class="d-flex align-items-center gap-3">
+                                <hr class="flex-grow-1 my-0">
+                                <span class="time-text">The call is transferred, you can now continue your correspondence.</span>
+                                <hr class="flex-grow-1 my-0">
+                            </div>
+                            <div class="d-flex align-items-center justify-content-center mt-1">
+                                <small class="text-muted">01/01/2025 13:33</small>
+                            </div>
+                        </div>
+    
+                        <div class="message sent">
+                            <div class="message-content">
+                                <p class="mb-0">I am the representative. How can I help?</p>
+                            </div>
+                            <div class="message-time text-end mt-2">01/01/2025 13:33</div>
+                        </div>
+
+                        <div class="message received">
+                            <div class="message-content">
+                                <p class="mb-0">I need help, please help me, thank you very much.</p>
+                            </div>
+                            <div class="message-time mt-2"><span class="text-black fw-medium ms-2">Israel Israeli</span> 01/01/2025 13:33 </div>
+                        </div>
+    
+                    </div>
+    
+                    <div class="message-input">
+                        <div class="d-flex align-items-center">
+                            <input type="text" class="message-form-control flex-grow-1 me-2 text-black" placeholder="Write your message here...">
+                            <button class="btn btn-sm me-2 chat-btn">
+                                <div><img src="/assets/images/feather-smile.svg" alt="smile icon"></div>
+                            </button>
+                            <button class="btn btn-sm me-2 chat-btn">
+                                <div><img src="/assets/images/attach-file.svg" alt="file icon"></div>
+                            </button>
+                            <button class="btn me-2 chat-sent-btn text-white align-items-center justify-content-center">
+                                <div><img src="/assets/images/feather-send.svg" alt="send icon"></div>
+                                <h6 class="mb-0 fw-normal d-lg-flex d-none">Send</h6>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
