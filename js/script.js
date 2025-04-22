@@ -64,14 +64,34 @@ document.addEventListener("DOMContentLoaded", function () {
         listItem.appendChild(text);
         dropdownMenu.appendChild(listItem);
 
+        listItem.addEventListener("click", function () {
+          const modalId = item.id ? `modal-${item.id}` : `modal-${index}`;
+          const modalElement = document.getElementById(modalId);
+          if (modalElement) {
+            const modal = new bootstrap.Modal(modalElement);
+            modal.show();
+          }
+        });
+
         if (index < menuItems.length - 1) {
           const divider = document.createElement("li");
           divider.className = "dropdown-divider m-0";
           dropdownMenu.appendChild(divider);
         }
       });
-    })
-    .catch((error) => console.error("Error loading menu:", error));
+
+      const modalPath = isHebrew
+        ? 'common/modal/chatmodal.html'
+        : 'common/modal/chatmodal-en.html';
+
+            fetch(modalPath)
+        .then(res => res.text())
+        .then(html => {
+          document.body.insertAdjacentHTML('beforeend', html); 
+        })
+        .catch(error => console.error('Error loading modal:', error));
+          })
+          .catch((error) => console.error("Error loading menu:", error));
 });
 
 // Mobile User Sidebar List

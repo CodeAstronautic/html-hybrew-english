@@ -74,6 +74,10 @@ body {
   padding: 4px 19px 4px 14px;
 }
 
+.accrodian-color{
+  background-color: #FBF7F4 !important;
+}
+
 .contact-item:hover {
   background-color: #D7FBDD;
 }
@@ -315,6 +319,98 @@ body {
   background: white;
   z-index: 9;
 }
+.custom-modal {
+  display: none;
+  position: fixed;
+  z-index: 10000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+
+.sub-menu{
+  background-color: #F3ECE6 !important;
+}
+
+.sub-menu:hover {
+  background-color: #D7FBDD !important;
+}
+
+
+
+/* .custom-modal-content {
+  background-color: #fff;
+  margin: 10% auto;
+  padding: 20px;
+  border-radius: 5px;
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+}
+
+.custom-modal-close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 20px;
+  cursor: pointer;
+} */
+
+.outline-searchbar {
+  width: 284px;
+  height: 43px;
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  border: 1px solid #D5D5D5;
+  border-radius: 5px;
+  opacity: 1;
+}
+
+.no-focus-border:focus {
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.custom-close-button {
+  position: absolute;
+  z-index: 1055;
+}
+
+.custom-close-button i {
+  font-size: 1.3rem;
+  color: white;
+}
+
+.custom-close-button i:hover {
+  cursor: pointer;
+}
+
+.accordion{
+  --bs-accordion-bg: #FBF7F4 !important;
+  --bs-accordion-active-bg: #FBF7F4 !important;
+  --bs-accordion-btn-focus-border-color: #FBF7F4 !important;
+  --bs-accordion-border-color: #FBF7F4 !important;
+  --bs-accordion-btn-focus-box-shadow: #FBF7F4 !important;
+}
+
+.mh-603{
+  max-height: 603px !important;
+  scroll-behavior: smooth !important;
+  scrollbar-width: thin !important;
+}
+
+.accordion-button {
+  display: flex;
+  justify-content: space-between;
+}
+input[type="checkbox"]:checked {
+  accent-color: #198754;
+}
+
 
 @media (max-width: 1440px) {
 .header-contact {
@@ -400,7 +496,9 @@ body {
     max-width: 264px;
   }
 }
-
+[lang='heb'] .accordion-button::after {
+ margin-left: 0 !important;
+}
 [lang='heb'] .chat-menu {
   left: -44px;
 }
@@ -424,4 +522,12 @@ body {
 }
 [lang='en'] .convesation-day {
   width: 72px;
+}
+[lang='heb'] .custom-close-button {
+  top: -30px;
+  left: -5px;
+}
+[lang='en'] .custom-close-button {
+  top: -30px;
+  right: -5px;
 }

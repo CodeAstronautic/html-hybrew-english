@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="heb" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div
+      class="modal fade overflow-hidden"
+      id="modal-representatives"
+      tabindex="-1"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-lg rounded-0">
+        <div class="modal-content position-relative">
+          <div class="custom-close-button">
+            <button
+              type="button"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+              class="border-0 bg-transparent"
+            >
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+          <div class="modal-body ">
+            <div class="bg-white d-flex row  my-1 align-items-center">
+              <div class="col-12 col-lg-7">
+                <div class="d-flex align-items-center gap-2  py-2">
+                  <img src="assets/images/headphone.svg" alt="headphone" style="width: 20px; height: 20px;" />
+                  <p class="mb-0 fw-medium text-dark">נציגים</p>
+                </div>
+              </div>
+              <div class="col-12 col-lg-4">
+                <div class="outline-searchbar w-100 d-flex align-items-center gap-4 justify-content-center my-2">
+                  <input
+                    type="text"
+                    placeholder="חפש נציג לפי שם/טלפון/מייל"
+                    class="no-focus-border fs-6 text-end fw-normal lh-1 border-0"
+                  />
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+              </div>
+              
+            </div>
+            <!--- Acreodian item -->
+            <div class="bg-white row overflow-y-auto overflow-x-hidden mh-603 position-sticky px-1">                       
+              <div class="col-12">  
+                <div                      
+                  class="accordion accordion-flush"
+                  id="accordionFlushExample"
+                >
+                  <div class="accordion-item  my-1">
+                    <h2 class="accordion-header" id="flush-headingOne">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#flush-collapseOne"
+                        aria-expanded="false"
+                        aria-controls="flush-collapseOne"
+                      >
+                      מזכירות
+                      </button>
+                    </h2>
+                    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                      <div class="accordion-body">
+                         <p>הוסף תוכן גוף</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                    class="accordion accordion-flush"
+                    id="accordionFlushExample"
+                >
+                    <div class="accordion-item  my-1">
+                      <h2 class="accordion-header" id="flush-headingTwo">
+                        <button
+                          class="accordion-button collapsed"
+                          type="button"
+                          data-bs-toggle="collapse"
+                          data-bs-target="#flush-collapseTwo"
+                          aria-expanded="false"
+                          aria-controls="flush-collapseTwo"
+                        >
+                        מנהלי חשבונות
+                        </button>
+                      </h2>
+                      <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">
+                          <div class="row d-flex flex-wrap">
+                            <div class="col-12 col-md-6 col-lg-3">
+                              <ul class="p-0">
+                                <li class="d-flex align-items-center w-100 my-1 gap-2 justify-content-center sub-menu rounded-1 check-success py-1"><input type="checkbox" class="check-success"/><p class="mb-0">איציק ישראלי</p></li>
+                                <li class="d-flex align-items-center  gap-2 justify-content-center sub-menu rounded-1 py-1"><input type="checkbox" class="check-success"/><p class="mb-0">איציק ישראלי</p></li>
+                                <li class="d-flex align-items-center my-1 gap-2 justify-content-center sub-menu rounded-1 py-1"><input type="checkbox" class="check-success"/><p class="mb-0">איציק ישראלי</p></li>
+                              </ul>
+                            </div>
+                            <div class="col-12 col-md-6 col-lg-3">
+                              <ul class="p-0">
+                                <li class="d-flex align-items-center my-1 gap-2 justify-content-center sub-menu rounded-1 py-1"><input type="checkbox" class="check-success"/><p class="mb-0">סימונה כהן</p></li>
+                                <li class="d-flex align-items-center  gap-2 justify-content-center sub-menu rounded-1 py-1"><input type="checkbox" class="check-success"/><p class="mb-0">סימונה כהן</p></li>
+                                <li class="d-flex align-items-center my-1 gap-2 justify-content-center sub-menu rounded-1 py-1"><input type="checkbox" class="check-success"/><p class="mb-0">סימונה כהן</p></li>
+                              </ul>
+                            </div>
+                            <div class="col-12 col-md-6 col-lg-3">
+                              <ul class="p-0">
+                                <li class="d-flex text-nowrap align-items-center my-1 gap-2 justify-content-center sub-menu rounded-1 py-1"><input type="checkbox" class="check-success"/><p class="mb-0">אלכסנדרה לונג שם</p></li>
+                                <li class="d-flex text-nowrap  gap-2 justify-content-center sub-menu rounded-1 py-1"><input type="checkbox" class="check-success"/><p class="mb-0">אלכסנדרה לונג שם</p></li>
+                                <li class="d-flex text-nowrap  my-1 gap-2 justify-content-center sub-menu rounded-1 py-1"><input type="checkbox" class="check-success"/><p class="mb-0">אלכסנדרה לונג שם</p></li>
+                              </ul>
+                            </div>
+                            <div class="col-12 col-md-6 col-lg-3">
+                              <ul class="p-0">
+                                <li class="d-flex align-items-center my-1 gap-2 justify-content-center sub-menu rounded-1 py-1"><input type="checkbox" class="check-success"/><p class="mb-0">ראובן לוי</p></li>
+                                <li class="d-flex align-items-center  gap-2 justify-content-center sub-menu rounded-1 py-1"><input type="checkbox" class="check-success"/><p class="mb-0">ראובן לוי</p></li>
+                                <li class="d-flex align-items-center my-1 gap-2 justify-content-center sub-menu rounded-1 py-1"><input type="checkbox" class="check-success"/><p class="mb-0">ראובן לוי</p></li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+                <div
+                    class="accordion accordion-flush"
+                    id="accordionFlushExample"
+                >
+                    <div class="accordion-item  my-1">
+                      <h2 class="accordion-header" id="flush-headingThree">
+                        <button
+                          class="accordion-button collapsed"
+                          type="button"
+                          data-bs-toggle="collapse"
+                          data-bs-target="#flush-collapseThree"
+                          aria-expanded="false"
+                          aria-controls="flush-collapseThree"
+                        >
+                        חשבות שכר
+                        </button>
+                      </h2>
+                      <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">
+                           <p>הוסף תוכן גוף</p>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+                <div
+                    class="accordion accordion-flush"
+                    id="accordionFlushExample"
+                >
+                    <div class="accordion-item  my-1">
+                      <h2 class="accordion-header" id="flush-headingFoure">
+                        <button
+                          class="accordion-button collapsed"
+                          type="button"
+                          data-bs-toggle="collapse"
+                          data-bs-target="#flush-collapseFoure"
+                          aria-expanded="false"
+                          aria-controls="flush-collapseFoure"
+                        >
+                        מנהלי תיקי לקוחות
+                        </button>
+                      </h2>
+                      <div id="flush-collapseFoure" class="accordion-collapse collapse" aria-labelledby="flush-headingFoure" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">
+                           <p>הוסף תוכן גוף</p>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+                <div
+                  class="accordion accordion-flush"
+                  id="accordionFlushExample"
+                >
+                  <div class="accordion-item  my-1">
+                    <h2 class="accordion-header" id="flush-headingFive">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#flush-collapseFive"
+                        aria-expanded="false"
+                        aria-controls="flush-collapseFive"
+                      >
+                      ביטוח לאומי והצהרת הון
+                      </button>
+                    </h2>
+                    <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
+                      <div class="accordion-body">
+                         <p>הוסף תוכן גוף</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="accordion accordion-flush"
+                  id="accordionFlushExample"
+                >
+                  <div class="accordion-item  my-1">
+                    <h2 class="accordion-header" id="flush-headingSix">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#flush-collapseSix"
+                        aria-expanded="false"
+                        aria-controls="flush-collapseSix"
+                      >
+                       UCAN2
+                      </button>
+                    </h2>
+                    <div id="flush-collapseSix" class="accordion-collapse collapse" aria-labelledby="flush-headingSix" data-bs-parent="#accordionFlushExample">
+                      <div class="accordion-body">
+                         <p>הוסף תוכן גוף</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
