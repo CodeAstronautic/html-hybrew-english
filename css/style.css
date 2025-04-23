@@ -265,9 +265,24 @@ body {
   width: 146px;
   height: 51px;
 }
-.btn:hover {
+/* .btn:hover {
   background-color: #F3F1EF;
+} */
+.table>:not(caption)>*>* { 
+  border-bottom-width: 0px;
+ }
+
+ .table-headerdata{
+  font-size: 13px !important;
+  font-weight: 400 !important;
+  letter-spacing: 0cap;
 }
+ .table-data{
+  font-size: 15px !important;
+  font-weight: 400 !important;
+  letter-spacing: 0cap;
+ }
+
 .chat-sent-btn:hover{
   background-color: #2ED54A !important;
 }
@@ -403,6 +418,13 @@ body {
   scrollbar-width: thin !important;
 }
 
+.mobile-table > .accordion {
+  --bs-accordion-bg: #ffffff  !important;
+  --bs-accordion-active-bg: #ffffff !important;
+  --bs-accordion-btn-focus-border-color: #ffffff !important;
+  --bs-accordion-border-color: #ffffff !important;
+  --bs-accordion-btn-focus-box-shadow: #ffffff !important;
+}
 .accordion-button {
   display: flex;
   justify-content: space-between;

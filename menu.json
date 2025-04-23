@@ -15,13 +15,15 @@
     "icon": "/assets/images/awesome-reply.svg",
     "alt": "reply icon",
     "text_he": "מענה אוטומטי",
-    "text_en": "Auto Reply"
+    "text_en": "Auto Reply",
+    "id": "autoreplay"
   },
   {
     "icon": "/assets/images/headphone.svg",
     "alt": "headphone icon",
     "text_he": "נציגים",
-    "text_en": "Representatives"
+    "text_en": "Representatives",
+    "id": "representatives"
   },
   {
     "icon": "/assets/images/feather-tag.svg",
