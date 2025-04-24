@@ -41,7 +41,8 @@
     "icon": "/assets/images/feather-phone.svg",
     "alt": "phone icon",
     "text_he": "ספר טלפונים",
-    "text_en": "Phonebook"
+    "text_en": "Phonebook",
+    "id": "phoneBook"
   },
   {
     "icon": "/assets/images/feather-bell.svg",
@@ -53,6 +54,7 @@
     "icon": "/assets/images/feather-user.svg",
     "alt": "user icon",
     "text_he": "משתמשים",
-    "text_en": "Users"
+    "text_en": "Users",
+    "id": "userData"
   }
 ]

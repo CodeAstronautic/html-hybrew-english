@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div
+      class="modal fade overflow-hidden"
+      id="modal-autoreplay"
+      tabindex="-1"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-lg rounded-0">
+        <div class="modal-content position-relative">
+          <div class="custom-close-button">
+            <button
+              type="button"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+              class="border-0 bg-transparent"
+            >
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="d-flex row shadow my-1 align-item-center">
+              <div class="col-12 col-lg-8">
+                <div class="d-flex justify-content-start align-items-center gap-2 py-2">
+                  <img
+                    src="assets/images/awesome-reply.svg"
+                    alt="headphone"
+                    style="width: 20px; height: 20px"
+                  />
+                  <p class="mb-0 fw-medium text-dark">Automatic Reply Settings</p>
+                </div>
+              </div>
+              <div class="col-12 col-lg-4">
+                <div class="outline-searchbar w-100 d-flex align-items-center gap-2 justify-content-center my-2">
+                    
+                  <input
+                    type="text"
+                    placeholder="Search "
+                    class="no-focus-border fs-6 text-end fw-normal lh-1 border-0"
+                  />
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+              </div>
+            </div>
+            <table class="table px-0 d-none d-md-table">
+              <thead>
+                <tr>
+                  <th class="table-headerdata">
+                    Title <i class="fa-solid fa-arrow-down text-secondary"></i>
+                  </th>
+                  <th class="table-headerdata">
+                    Start Date
+                    <i class="fa-solid fa-arrow-down text-secondary"></i>
+                  </th>
+                  <th class="table-headerdata">
+                    End Date
+                    <i class="fa-solid fa-arrow-down text-secondary"></i>
+                  </th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody class="border-bottom mx-3 align-middle" id="autoreplay-data"></tbody>
+            </table>
+            <div class="d-block d-md-none" id="autoreplaymobile-data"></div>
+            <div class="row d-flex flex-wrap-reverse">
+              <div class="col-12 col-md-6 col-lg-8">
+                <button
+                  type="button"
+                  class="custom-btn text-white autoreplay-btn justify-content-center d-flex align-items-center gap-2"
+                >
+                  <i class="fa-solid fa-plus text-white"></i>
+                  <p class="mb-0">Add Automatic Reply</p>
+                </button>
+              </div>
+              <div class="col-12 col-md-6 col-lg-4 my-2 my-md-0">
+                <div
+                  class="d-flex justify-content-center align-items-center gap-2"
+                >
+                  <!-- Left arrow -->
+                  <button class="pagination-btn btn-outline-dark">
+                    <i class="fa-solid fa-arrow-left"></i>
+                  </button>
+                  <!-- Page numbers -->
+                  <div class="d-flex gap-2 align-items-center">
+                    <span class="px-2 py-1">3</span>
+                    <span
+                      class="rounded-circle d-inline-block text-center pagination-helight"
+                      >2</span
+                    >
+                    <span class="px-2 py-1">1</span>
+                  </div>
+                  <!-- Right arrow -->
+                  <button class="pagination-btn btn-outline-dark">
+                    <i class="fa-solid fa-arrow-right"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <div
+        class="modal fade overflow-hidden"
+        id="modal-userData"
+        tabindex="-1"
+        aria-hidden="true"
+    >
+        <div class="modal-dialog modal-dialog-centered modal-lg rounded-0">  
+            <div class="modal-content position-relative">
+                <div class="custom-close-button">
+                    <button
+                      type="button"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                      class="border-0 bg-transparent"
+                    >
+                      <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div> 
+                <div class="modal-body p-0">
+                    <div class="d-flex gap-2 shadow py-4 px-3 mb-3 align-item-center">
+                        <img src="../../assets/images/feather-user.svg" alt="user image">
+                        <p class="mb-0 fw-semibold"> User Settings |  </p>
+                        <p class="mb-0 table-data"> Edit Representative #100 </p> 
+                    </div>   
+                    <div class="row my-2 mx-3 rounded-2 p-2 bg-Linen ">
+                        <div class="col-12 col-md-6 col-lg-2">
+                            <p class="mb-0">Name</p>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-10">
+                            <input type="text" class="border py-1  rounded-1 no-focus-border w-100">
+                        </div>    
+                    </div> 
+                    <div class="row my-2 mx-3 rounded-2 p-2 bg-Linen ">
+                        <div class="col-12 col-md-6 col-lg-2">
+                            <p class="mb-0"> English  Name </p>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-10">
+                            <input type="text" class="border py-1  rounded-1 no-focus-border w-100">
+                        </div>    
+                    </div> 
+                    <div class="row my-2 mx-3 rounded-2 p-2 bg-Linen ">
+                        <div class="col-12 col-md-6 col-lg-2">
+                            <p class="mb-0">Email</p>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-10">
+                            <input type="email" class="border py-1  rounded-1 no-focus-border w-100">
+                        </div>    
+                    </div> 
+                    <div class="row my-2 mx-3 rounded-2 p-2 bg-Linen ">
+                        <div class="col-12 col-md-6 col-lg-2">
+                            <p class="mb-0">Mobile</p>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-10">
+                            <input type="text" class="border py-1  rounded-1 no-focus-border w-100">
+                        </div>    
+                    </div> 
+                    <div class="row my-2 mx-3 rounded-2 p-2 bg-Linen ">
+                        <div class="col-12 col-md-6 col-lg-2">
+                            <p class="mb-0">Password</p>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-10">
+                            <div class="bg-white d-flex align-items-center justify-content-between px-3 border rounded-1">
+                                <input type="password"  id="passwordInput"  class="py-1 no-focus-border w-75 border-0">
+                                <button class="border-0 bg-white" onclick="togglePassword()"><i id="eyeIcon" class="fas fa-eye-slash"></i></button>
+                            </div>
+                            
+                        </div>    
+                    </div>
+                   
+                    <div class="row d-flex flex-wrap m-1">
+                    <div class="col-6 col-lg-4">
+                        <button class="btn btn-outline-dark border rounded-3 w-100 text-center">Change Password</button>
+                    </div>
+                     <div class="col-6 col-lg-4">
+                        <button class="btn btn-dark border rounded-3 w-100 text-center">Change Password</button>
+                     </div>
+                     <div class="col-12 col-lg-4">
+                        <button class="btn btn-success border rounded-3 w-100 text-white my-3 my-lg-0 text-center">Save</button>
+                     </div>
+                     
+                    </div>
+                </div>   
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    function togglePassword() {
+      const input = document.getElementById('passwordInput');
+      const icon = document.getElementById('eyeIcon');
+  
+      if (!input || !icon) return;
+  
+      if (input.type === 'password') {
+        input.type = 'text';
+        icon.classList.remove('fa-eye-slash');
+        icon.classList.add('fa-eye');
+      } else {
+        input.type = 'password';
+        icon.classList.remove('fa-eye');
+        icon.classList.add('fa-eye-slash');
+      }
+    }
+  </script>
+</html>

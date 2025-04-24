@@ -67,7 +67,9 @@ document.addEventListener("DOMContentLoaded", function () {
         dropdownMenu.appendChild(listItem);
 
         listItem.addEventListener("click", function () {
-          const modalId = item.id ? `modal-${item.id}` : `modal-${index}`;
+          const modalId = item.id
+            ? `modal-${item.id}`
+            : item.modalId || `modal-${index}`;
           const modalElement = document.getElementById(modalId);
           if (modalElement) {
             const modal = new bootstrap.Modal(modalElement);
@@ -81,8 +83,27 @@ document.addEventListener("DOMContentLoaded", function () {
           dropdownMenu.appendChild(divider);
         }
       });
-      // Chat modal path
 
+      //PhonBook data
+      const phoneBook = isHebrew ? "common/modal/phoneBook.html" : "common/modal/phoneBook-en.html";
+      fetch(phoneBook)
+        .then((res) => res.text())
+        .then((html) => {
+          document.body.insertAdjacentHTML("beforeend", html);
+        })
+        .catch((error) => console.log("error Modal for handleing", error));
+
+      // User modal path
+
+      const userdataPath = isHebrew ? "common/modal/usermodal.html" : "common/modal/usermodal-en.html";
+      fetch(userdataPath)
+        .then((res) => res.text())
+        .then((html) => {
+          document.body.insertAdjacentHTML("beforeend", html);
+        })
+        .catch((error) => console.log("error Modal for handleing", error));
+
+      // Chat modal path
       const modalPath = isHebrew
         ? "common/modal/chatmodal.html"
         : "common/modal/chatmodal-en.html";
@@ -93,23 +114,124 @@ document.addEventListener("DOMContentLoaded", function () {
           document.body.insertAdjacentHTML("beforeend", html);
         })
         .catch((error) => console.error("Error loading modal:", error));
-    })
-    .catch((error) => console.error("Error loading menu:", error)); 
-  
-   // auto replay modal
-      const modalPath = isHebrew
-      ? "common/modal/autoreplay.html"
-      : "common/modal/autoreplay-en.html";
+
+      // Auto Replay Table Data
+      const autoreplayPath = isHebrew
+      ? "common/modal/autoreplaymodal.html"
+      : "common/modal/autoreplaymodal-en.html";
       
-      fetch(modalPath)
-        .then((res) => res.text())
-        .then((html) => {
-          document.body.insertAdjacentHTML("beforeend", html);
-        })
-        .catch((error) => console.error("Error loading modal:", error));
-    });
-  //   .catch((error) => console.error("Error loading menu:", error)); 
-  // });
+      fetch(autoreplayPath)
+      .then((res) => res.text())
+      .then((html) => {
+        document.body.insertAdjacentHTML("beforeend", html);
+      
+        // Now that the modal is inserted, fetch and populate the table data
+        fetch("autoreplayData.json")
+          .then((response) => {
+            if (!response.ok)
+              throw new Error("Failed to fetch autoreplayData.json");
+            return response.json();
+          })
+          .then((data) => {
+            const contactChatList =
+              document.getElementById("autoreplay-data");
+            console.log("autoreplay-data element:", contactChatList);
+      
+            if (!contactChatList) {
+              console.error("Element with ID 'autoreplay-data' not found!");
+              return;
+            }
+      
+            contactChatList.innerHTML = data
+              .map((item) => {
+                return `
+          <tr class="border-bottom">
+            <td class="fs-6 fw-bold">${
+              isHebrew ? item?.Title_he : item?.Title_en
+            }</td>
+            <td class="table-data">${item.startDate_val}</td>
+            <td class="table-data">${item.endDate_val}</td>
+            <td class="table-data">
+              <div class="d-flex align-items-center flex-wrap gap-4 gap-lg-2 my-2 my-lg-0">
+                <img src="assets/images/feather-edit.svg" width="18px" height="18px" alt="edit icon">
+                <i class="fa-solid fa-trash-can fa-lg" style="color: #D42359;"></i>
+              </div>
+            </td>
+          </tr>
+        `;
+              })
+              .join("");
+          })
+          .catch((error) => {
+            console.error("Error loading autoreplay data:", error);
+          });
+
+        // Mobile Data Table
+        fetch("autoreplayData.json")
+          .then((response) => {
+            if (!response.ok)
+              throw new Error("Failed to fetch autoreplayData.json");
+            return response.json();
+          })
+          .then((data) => {
+            const contactChatList =
+              document.getElementById("autoreplaymobile-data");
+            console.log("autoreplay-data element:", contactChatList);
+      
+            if (!contactChatList) {
+              console.error("Element with ID 'autoreplay-data' not found!");
+              return;
+            }
+      
+            contactChatList.innerHTML = data
+              .map((item) => {
+                return `
+                <div class="row gap-3 gap-sm-0 border-bottom">
+                  <div class="col-8">
+                    <p class="mb-0 fs-6 fw-bold text-nowrap">${ isHebrew ? item.Title_he : item.Title_en}</p>
+                    <div class="d-flex flex-column gap-1">
+                      <div class="d-flex align-item-center gap-2">
+                        <p class="mb-0 text-nowrap">${isHebrew ? item.startDate_he : item.startDate_en}</p>
+                        <p class="mb-0 text-nowrap">01/01/2025 13:25</p>
+                      </div>
+                      <div class="d-flex align-item-center gap-2">
+                        <p class="mb-0 text-nowrap">${isHebrew ? item.endDate_he : item.endDate_en}</p>
+                        <p class="mb-0 text-nowrap">01/01/2025 13:25</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-2">
+                    <div class="table-data">
+                      <div
+                        class="d-flex justify-content-sm-center justify-content-around flex-column align-items-center flex-wrap gap-4 my-2"
+                      >
+                        <img
+                          src="assets/images/feather-edit.svg"
+                          width="18px"
+                          height="18px"
+                          alt="edit icon"
+                        />
+                        <i
+                          class="fa-solid fa-trash-can fa-lg"
+                          style="color: #d42359"
+                        ></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+        `;
+              })
+              .join("");
+          })
+          .catch((error) => {
+            console.error("Error loading autoreplay data:", error);
+          });
+      })
+      .catch((error) => console.error("Error loading modal:", error));
+    })
+    .catch((error) => console.error("Error loading menu:", error));
+});
+
 
 // Mobile Header DropDown List
 document.addEventListener("DOMContentLoaded", function () {
@@ -300,37 +422,55 @@ document.addEventListener("DOMContentLoaded", function () {
           return `
           <div class="accordion-item">
             <h2 class="accordion-header px-2">
-              <button class="accordion-button border-bottom" type="button" data-bs-toggle="collapse" data-bs-target="${item['data-bs-target']}" aria-expanded="true"  aria-controls="${item['aria-controls']}">
+              <button class="accordion-button border-bottom" type="button" data-bs-toggle="collapse" data-bs-target="${
+                item["data-bs-target"]
+              }" aria-expanded="true"  aria-controls="${item["aria-controls"]}">
                  <div class="d-flex align-items-center gap-3">
                       <span class="table-data">${item.searialNumber}</span>
                       <span>|</span>
-                      <p class="mb-0 fw-semibold fs-6">${isHebrew ? item.name_he : item.name_en}</p>
+                      <p class="mb-0 fw-semibold fs-6">${
+                        isHebrew ? item.name_he : item.name_en
+                      }</p>
                  </div>                                  
               </button>
             </h2>
-            <div id="${item['aria-controls']}" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+            <div id="${
+              item["aria-controls"]
+            }" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
               <div class="accordion-body">
                   <div class="d-flex flex-wrap justify-content-between align-items-center">
                       <div class="d-flex align-items-center gap-3">
                           <span class="table-data">${item.searialNumber}</span>
                           <span>|</span>
-                          <p class="mb-0 fw-semibold fs-6">${isHebrew ? item.name_he : item.name_en}</p>
+                          <p class="mb-0 fw-semibold fs-6">${
+                            isHebrew ? item.name_he : item.name_en
+                          }</p>
                      </div>
-                     <p class="mb-0">${isHebrew ? item.name_he : item.name_en}</p>
+                     <p class="mb-0">${
+                       isHebrew ? item.name_he : item.name_en
+                     }</p>
                   </div>
       
                   <div class="d-flex flex-wrap justify-content-between align-items-center gap-3">
-                      <p class="mb-0 table-data text-nowrap">14 :${isHebrew ? item.extention_he : item.extention_en}</p>
+                      <p class="mb-0 table-data text-nowrap">14 :${
+                        isHebrew ? item.extention_he : item.extention_en
+                      }</p>
                       <span>|</span>
-                      <p class="mb-0 table-data text-nowrap">${isHebrew ? item.depatment_he : item.depatment_en}</p>
+                      <p class="mb-0 table-data text-nowrap">${
+                        isHebrew ? item.depatment_he : item.depatment_en
+                      }</p>
                       <span>|</span>
-                      <p class="mb-0 table-data text-nowrap ">${item.mobile_no}</p>
+                      <p class="mb-0 table-data text-nowrap ">${
+                        item.mobile_no
+                      }</p>
                   </div>
       
                   <div class=" d-flex flex-wrap justify-content-between my-2">
                       <div class="d-flex align-items-center gap-3">
                           <button type="button" class="btn ${btnClass} table-data lh-1">${statusLabel}</button>
-                          <p class="mb-0 text-data">${item.various} : ${isHebrew ? item.varies_he : item.varies_en}</p>
+                          <p class="mb-0 text-data">${item.various} : ${
+            isHebrew ? item.varies_he : item.varies_en
+          }</p>
                       </div>
                       <div class="d-flex align-items-center gap-2">
                           <img src="assets/images/feather-edit.svg" alt="edit icon">
@@ -348,3 +488,5 @@ document.addEventListener("DOMContentLoaded", function () {
       console.error("Error loading JSON data:", error);
     });
 });
+
+

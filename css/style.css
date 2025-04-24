@@ -126,9 +126,7 @@ body {
   clip-path: polygon(0 0, 100% 100%, 0 100%);
 }
 
-.sent {
-  align-self: flex-end;
-}
+.sent {align-self: flex-end;}
 
 .sent .message-content {
   position: relative;
@@ -231,6 +229,29 @@ body {
   margin-top: 26px;
   border-bottom: 5px solid #2ED54A;
 }
+
+.pagination-helight{
+  width: 30px; 
+  height: 30px; 
+  line-height: 30px;
+  background-color: #2ED54A;
+  color: white;
+}
+
+.pagination-btn {
+  width: 28px;
+  height: 28px;
+  border: 1px solid black;
+  padding: 2px;
+  border-radius: 50%;
+}
+
+.pagination-btn:hover{
+  background-color: black;
+  color: white;
+}
+
+.autoreplay-btn{width: 50% !important;}
 
 .contact-list {
   margin-top: 22px;
@@ -404,6 +425,10 @@ body {
   cursor: pointer;
 }
 
+.bg-Linen{
+  background-color: #FBF7F4 !important;
+}
+
 .accordion{
   --bs-accordion-bg: #FBF7F4 !important;
   --bs-accordion-active-bg: #FBF7F4 !important;
@@ -465,6 +490,13 @@ input[type="checkbox"]:checked {
   }
   .custom-btn, .custom-btn2 {
     font-size: 12px;
+  }
+  
+}
+
+@media (max-width: 992px) {
+  .autoreplay-btn {
+    width: 100% !important;
   }
 }
 @media (max-width: 768px) {
