@@ -69,10 +69,19 @@
                         </div>
                         <div class="col-12 col-md-6 col-lg-10">
                             <div class="bg-white d-flex align-items-center justify-content-between px-3 border rounded-1">
-                                <input type="password"  id="passwordInput"  class="py-1 no-focus-border w-75 border-0">
-                                <button class="border-0 bg-white" onclick="togglePassword()"><i id="eyeIcon" class="fas fa-eye-slash"></i></button>
-                            </div>
-                            
+                                <input
+                                type="password"
+                                id="passwordInput"
+                                class="py-1 no-focus-border w-75 border-0"
+                              />
+                              <button
+                                class="border-0 bg-white"
+                                type="button"
+                                onclick="togglePassword()"
+                              >
+                                <i id="eyeIcon" class="fas fa-eye-slash"></i>
+                              </button>
+                            </div>  
                         </div>    
                     </div>
                    
@@ -86,30 +95,11 @@
                      <div class="col-12 col-lg-4">
                         <button class="btn btn-success border rounded-3 my-3 my-lg-0 w-100 text-white text-center">שמור</button>
                      </div>
-                     
                     </div>
                 </div>   
             </div>
         </div>
     </div>
 </body>
-<script>
-    function togglePassword() {
 
-      const input = document.getElementById('passwordInput');
-      const icon = document.getElementById('eyeIcon');
-     console.log("ierer", input);
-      if (input.type === 'password') {
-        input.type = 'text';
-        icon.classList.remove('fa-eye-slash');
-        icon.classList.add('fa-eye');
-      } else {
-        input.type = 'password';
-        icon.classList.remove('fa-eye');
-        icon.classList.add('fa-eye-slash');
-      }
-    }
-    togglePassword();
-    console.log("klgjlkdfjgdfkg", togglePassword());
-  </script>
 </html>

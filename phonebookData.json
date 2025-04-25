@@ -1,0 +1,86 @@
+[
+    {
+        "id" : 1,
+        "Mobile": "0542222222",
+        "Customername_en": "Israel Israeli",
+        "Customername_he": "ישראל ישראלי",
+        "Description_en": "New Customer",
+        "Description_he": "לקוח חדש",
+        "Email": "info@domain.co.il",
+        "aria-controls": "flush-collapseOne",
+        "data-bs-target": "#flush-collapseOne",
+        "aria-labelledby": "flush-headingOne"
+    },
+    {
+        "id" : 2,
+        "Mobile": "0542222222",
+        "Customername_en": "Israel Israeli",
+        "Customername_he": "ישראל ישראלי",
+        "Description_en": "New Customer",
+        "Description_he": "לקוח חדש",
+        "Email": "info@domain.co.il",
+        "aria-controls": "flush-collapseTwo",
+        "data-bs-target": "#flush-collapseTwo",
+        "aria-labelledby": "flush-headingTwo"
+    },
+    {
+        "id" : 3,
+        "Mobile": "0542222222",
+        "Customername_en": "Israel Israeli",
+        "Customername_he": "ישראל ישראלי",
+        "Description_en": "New Customer",
+        "Description_he": "לקוח חדש",
+        "Email": "info@domain.co.il",
+        "aria-controls": "flush-collapseThree",
+        "data-bs-target": "#flush-collapseThree",
+        "aria-labelledby": "flush-headingThree"
+    },
+    {
+        "id" : 4,
+        "Mobile": "0542222222",
+        "Customername_en": "Israel Israeli",
+        "Customername_he": "ישראל ישראלי",
+        "Description_en": "New Customer",
+        "Description_he": "לקוח חדש",
+        "Email": "info@domain.co.il",
+        "aria-controls": "flush-collapseFoure",
+        "data-bs-target": "#flush-collapseFoure",
+        "aria-labelledby": "flush-headingFoure"
+    },
+    {
+        "id" : 5,
+        "Mobile": "0542222222",
+        "Customername_en": "Israel Israeli",
+        "Customername_he": "ישראל ישראלי",
+        "Description_en": "New Customer",
+        "Description_he": "לקוח חדש",
+        "Email": "info@domain.co.il",
+        "aria-controls": "flush-collapseFive",
+        "data-bs-target": "#flush-collapseFive",
+        "aria-labelledby": "flush-headingFive"
+    },
+    {
+        "id" : 6,
+        "Mobile": "0542222222",
+        "Customername_en": "Israel Israeli",
+        "Customername_he": "ישראל ישראלי",
+        "Description_en": "New Customer",
+        "Description_he": "לקוח חדש",
+        "Email": "info@domain.co.il",
+        "aria-controls": "flush-collapseSix",
+        "data-bs-target": "#flush-collapseSix",
+        "aria-labelledby": "flush-headingSix"
+    },
+    {
+        "id" : 7,
+        "Mobile": "0542222222",
+        "Customername_en": "Israel Israeli",
+        "Customername_he": "ישראל ישראלי",
+        "Description_en": "New Customer",
+        "Description_he": "לקוח חדש",
+        "Email": "info@domain.co.il",
+        "aria-controls": "flush-collapseSevan",
+        "data-bs-target": "#flush-collapseSevan",
+        "aria-labelledby": "flush-headingSevan"
+    }
+]

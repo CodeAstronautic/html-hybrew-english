@@ -85,17 +85,120 @@ document.addEventListener("DOMContentLoaded", function () {
       });
 
       //PhonBook data
-      const phoneBook = isHebrew ? "common/modal/phoneBook.html" : "common/modal/phoneBook-en.html";
+      // Fetch phonebook modal (Hebrew/English)
+      const phoneBook = isHebrew
+      ? "common/modal/phoneBook.html"
+      : "common/modal/phoneBook-en.html";
       fetch(phoneBook)
-        .then((res) => res.text())
-        .then((html) => {
-          document.body.insertAdjacentHTML("beforeend", html);
-        })
-        .catch((error) => console.log("error Modal for handleing", error));
+      .then((res) => res.text())
+      .then((html) => {
+        document.body.insertAdjacentHTML("beforeend", html);
+      })
+      .catch((error) => console.log("Error loading phonebook modal:", error));
+
+      // Fetch phonebook data and apply filtering
+      fetch("phonebookData.json")
+      .then((response) => {
+        if (!response.ok) throw new Error("Failed to fetch phonebookData.json");
+        return response.json();
+      })
+      .then((data) => {
+        let phonebookData = data;
+        const contactChatList = document.getElementById("phoneBookData");
+        const mobilePhoneBookData = document.getElementById("mobilephoneBookData");
+
+        // Function to render desktop phonebook table
+        const renderPhoneBookTable = (data) => {
+          contactChatList.innerHTML = data
+            .map((item) => {
+              return `
+                <tr class="border-bottom">
+                  <td class="table-data fs-6 fw-bold">${item.Mobile}</td>
+                  <td class="fs-6 fw-bold">${isHebrew ? item.Customername_he : item.Customername_en}</td>
+                  <td class="table-data">${item.Email}</td>
+                  <td class="table-data">${isHebrew ? item.Description_he : item.Description_en}</td>
+                  <td class="table-data">
+                    <div class="d-flex align-items-center flex-wrap gap-4 gap-lg-3 my-2 my-lg-0">
+                      <i class="fas fa-comment-medical fa-lg" style="color: #11fd11;"></i>
+                      <img src="assets/images/feather-edit.svg" width="18px" height="18px" alt="edit icon">
+                      <i class="fa-solid fa-trash-can fa-lg" style="color: #D42359;"></i>
+                    </div>
+                  </td>
+                </tr>`;
+            })
+            .join("");
+        };
+
+        // Function to render mobile phonebook data
+        const renderMobilePhoneBookData = (data) => {
+          mobilePhoneBookData.innerHTML = data
+            .map((item) => {
+              return `
+                <div class="accordion accordion-flush overflow-y-auto overflow-x-hidden mh-603" id="accordionFlushExample">
+                  <div class="accordion-item my-1">
+                    <h2 class="accordion-header" id="${item["aria-labelledby"]}">
+                      <button
+                        class="accordion-button fs-6 fw-bold collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="${item["data-bs-target"]}"
+                        aria-expanded="false"
+                        aria-controls="${item["aria-controls"]}"
+                      >
+                        ${isHebrew ? item.Customername_he : item.Customername_en}
+                      </button>
+                    </h2>
+                    <div id="${item["aria-controls"]}" class="accordion-collapse collapse" aria-labelledby="${item["aria-labelledby"]}" data-bs-parent="#accordionFlushExample">
+                      <div class="accordion-body">
+                        <div class="row d-flex align-items-center">
+                          <div class="col-6">
+                            <div class="d-flex flex-column gap-2 justify-content-center">
+                              <p class="mb-0">${item.Mobile}</p>
+                              <p class="mb-0">${item.Email}</p>
+                              <p class="mb-0">${isHebrew ? item.Description_he : item.Description_en}</p>
+                            </div>
+                          </div>
+                          <div class="col-6 text-end">
+                            <div class="d-flex flex-column align-items-end gap-4">
+                              <i class="fas fa-comment-medical fa-lg" style="color: #11fd11;"></i>
+                              <img src="assets/images/feather-edit.svg" width="18px" height="18px" alt="edit icon">
+                              <i class="fa-solid fa-trash-can fa-lg" style="color: #D42359;"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>`;
+            })
+            .join("");
+        };
+
+        renderPhoneBookTable(phonebookData);
+        renderMobilePhoneBookData(phonebookData);
+
+        // Search functionality
+        document.getElementById("searchButton").addEventListener("click", () => {
+          const input = document.getElementById("searchInput").value.toLowerCase();
+          const filtered = phonebookData.filter(
+            (item) =>
+              item.Mobile.includes(input) ||
+              item.Customername_en.toLowerCase().includes(input) ||
+              item.Customername_he.toLowerCase().includes(input) ||
+              item.Description_en.toLowerCase().includes(input) ||
+              item.Description_he.toLowerCase().includes(input)
+          );
+          renderPhoneBookTable(filtered);
+          renderMobilePhoneBookData(filtered);
+        });
+      })
+      .catch((error) => console.log("Error loading phonebook data:", error));
+
 
       // User modal path
-
-      const userdataPath = isHebrew ? "common/modal/usermodal.html" : "common/modal/usermodal-en.html";
+      const userdataPath = isHebrew
+        ? "common/modal/usermodal.html"
+        : "common/modal/usermodal-en.html";
       fetch(userdataPath)
         .then((res) => res.text())
         .then((html) => {
@@ -117,85 +220,92 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Auto Replay Table Data
       const autoreplayPath = isHebrew
-      ? "common/modal/autoreplaymodal.html"
-      : "common/modal/autoreplaymodal-en.html";
-      
-      fetch(autoreplayPath)
-      .then((res) => res.text())
-      .then((html) => {
-        document.body.insertAdjacentHTML("beforeend", html);
-      
-        // Now that the modal is inserted, fetch and populate the table data
-        fetch("autoreplayData.json")
-          .then((response) => {
-            if (!response.ok)
-              throw new Error("Failed to fetch autoreplayData.json");
-            return response.json();
-          })
-          .then((data) => {
-            const contactChatList =
-              document.getElementById("autoreplay-data");
-            console.log("autoreplay-data element:", contactChatList);
-      
-            if (!contactChatList) {
-              console.error("Element with ID 'autoreplay-data' not found!");
-              return;
-            }
-      
-            contactChatList.innerHTML = data
-              .map((item) => {
-                return `
-          <tr class="border-bottom">
-            <td class="fs-6 fw-bold">${
-              isHebrew ? item?.Title_he : item?.Title_en
-            }</td>
-            <td class="table-data">${item.startDate_val}</td>
-            <td class="table-data">${item.endDate_val}</td>
-            <td class="table-data">
-              <div class="d-flex align-items-center flex-wrap gap-4 gap-lg-2 my-2 my-lg-0">
-                <img src="assets/images/feather-edit.svg" width="18px" height="18px" alt="edit icon">
-                <i class="fa-solid fa-trash-can fa-lg" style="color: #D42359;"></i>
-              </div>
-            </td>
-          </tr>
-        `;
-              })
-              .join("");
-          })
-          .catch((error) => {
-            console.error("Error loading autoreplay data:", error);
-          });
+        ? "common/modal/autoreplaymodal.html"
+        : "common/modal/autoreplaymodal-en.html";
 
-        // Mobile Data Table
-        fetch("autoreplayData.json")
-          .then((response) => {
-            if (!response.ok)
-              throw new Error("Failed to fetch autoreplayData.json");
-            return response.json();
-          })
-          .then((data) => {
-            const contactChatList =
-              document.getElementById("autoreplaymobile-data");
-            console.log("autoreplay-data element:", contactChatList);
-      
-            if (!contactChatList) {
-              console.error("Element with ID 'autoreplay-data' not found!");
-              return;
-            }
-      
-            contactChatList.innerHTML = data
-              .map((item) => {
-                return `
+      fetch(autoreplayPath)
+        .then((res) => res.text())
+        .then((html) => {
+          document.body.insertAdjacentHTML("beforeend", html);
+
+          // Now that the modal is inserted, fetch and populate the table data
+          fetch("autoreplayData.json")
+            .then((response) => {
+              if (!response.ok)
+                throw new Error("Failed to fetch autoreplayData.json");
+              return response.json();
+            })
+            .then((data) => {
+              const contactChatList =
+                document.getElementById("autoreplay-data");
+              console.log("autoreplay-data element:", contactChatList);
+
+              if (!contactChatList) {
+                console.error("Element with ID 'autoreplay-data' not found!");
+                return;
+              }
+
+              contactChatList.innerHTML = data
+                .map((item) => {
+                  return `
+                            <tr class="border-bottom">
+                              <td class="fs-6 fw-bold">${
+                                isHebrew ? item?.Title_he : item?.Title_en
+                              }</td>
+                              <td class="table-data">${item.startDate_val}</td>
+                              <td class="table-data">${item.endDate_val}</td>
+                              <td class="table-data">
+                                <div class="d-flex align-items-center flex-wrap gap-4 gap-lg-2 my-2 my-lg-0">
+                                  <img src="assets/images/feather-edit.svg" width="18px" height="18px" alt="edit icon">
+                                  <i class="fa-solid fa-trash-can fa-lg" style="color: #D42359;"></i>
+                                </div>
+                              </td>
+                            </tr>
+                          `;
+                })
+                .join("");
+            })
+            .catch((error) => {
+              console.error("Error loading autoreplay data:", error);
+            });
+
+          // Mobile Data Table
+          fetch("autoreplayData.json")
+            .then((response) => {
+              if (!response.ok)
+                throw new Error("Failed to fetch autoreplayData.json");
+              return response.json();
+            })
+            .then((data) => {
+              const contactChatList = document.getElementById(
+                "autoreplaymobile-data"
+              );
+              console.log("autoreplay-data element:", contactChatList);
+
+              if (!contactChatList) {
+                console.error("Element with ID 'autoreplay-data' not found!");
+                return;
+              }
+
+              contactChatList.innerHTML = data
+                .map((item) => {
+                  return `
                 <div class="row gap-3 gap-sm-0 border-bottom">
                   <div class="col-8">
-                    <p class="mb-0 fs-6 fw-bold text-nowrap">${ isHebrew ? item.Title_he : item.Title_en}</p>
+                    <p class="mb-0 fs-6 fw-bold text-nowrap">${
+                      isHebrew ? item.Title_he : item.Title_en
+                    }</p>
                     <div class="d-flex flex-column gap-1">
                       <div class="d-flex align-item-center gap-2">
-                        <p class="mb-0 text-nowrap">${isHebrew ? item.startDate_he : item.startDate_en}</p>
+                        <p class="mb-0 text-nowrap">${
+                          isHebrew ? item.startDate_he : item.startDate_en
+                        }</p>
                         <p class="mb-0 text-nowrap">01/01/2025 13:25</p>
                       </div>
                       <div class="d-flex align-item-center gap-2">
-                        <p class="mb-0 text-nowrap">${isHebrew ? item.endDate_he : item.endDate_en}</p>
+                        <p class="mb-0 text-nowrap">${
+                          isHebrew ? item.endDate_he : item.endDate_en
+                        }</p>
                         <p class="mb-0 text-nowrap">01/01/2025 13:25</p>
                       </div>
                     </div>
@@ -220,18 +330,17 @@ document.addEventListener("DOMContentLoaded", function () {
                   </div>
                 </div>
         `;
-              })
-              .join("");
-          })
-          .catch((error) => {
-            console.error("Error loading autoreplay data:", error);
-          });
-      })
-      .catch((error) => console.error("Error loading modal:", error));
+                })
+                .join("");
+            })
+            .catch((error) => {
+              console.error("Error loading autoreplay data:", error);
+            });
+        })
+        .catch((error) => console.error("Error loading modal:", error));
     })
     .catch((error) => console.error("Error loading menu:", error));
 });
-
 
 // Mobile Header DropDown List
 document.addEventListener("DOMContentLoaded", function () {
@@ -271,7 +380,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   menuData.forEach((item, index) => {
     let listItem = `
-      <li class="list-group-item d-flex align-items-center gap-3 p-4 border-0 ${
+      <li class="list-group-item d-flex align-items-center gap-3 p-4 border-0  menu_list ${
         index === 0 ? "sticky-header" : ""
       }">
           <img src="/assets/images/${item.icon}" alt="${item.label.en} icon">
@@ -284,7 +393,7 @@ document.addEventListener("DOMContentLoaded", function () {
                   ? `<br><small class="text-black">${
                       isHebrew ? item.subText.he : item.subText.en
                     }</small>`
-                  : ""
+                  : " "
               }
           </div>
       </li>
@@ -489,4 +598,20 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+// Toggle Password is create
+function togglePassword() {
+  const input = document.getElementById("passwordInput");
+  const icon = document.getElementById("eyeIcon");
 
+  if (!input || !icon) return;
+
+  if (input.type === "password") {
+    input.type = "text";
+    icon.classList.remove("fa-eye-slash");
+    icon.classList.add("fa-eye");
+  } else {
+    input.type = "password";
+    icon.classList.remove("fa-eye");
+    icon.classList.add("fa-eye-slash");
+  }
+}

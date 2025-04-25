@@ -20,6 +20,8 @@ body {
   background: #D8D2CD;
   border-radius: 80px;
 }
+.menu_list:hover{background-color: #D4F8D4 !important; cursor: pointer;}
+.menu_list:active{background-color: #D4F8D4 !important;}
 
 .chat-container {
   height: 100vh;
@@ -584,4 +586,14 @@ input[type="checkbox"]:checked {
 [lang='en'] .custom-close-button {
   top: -30px;
   right: -5px;
+}
+
+.chat-body-representative {
+  display: none;
+}
+.show-representative .chat-body {
+  display: none;
+}
+.show-representative .chat-body-representative {
+  display: block;
 }
