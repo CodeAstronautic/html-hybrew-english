@@ -174,7 +174,7 @@
                         </div>
                   </div>
                 </div>  
-                <div class="chat-body">
+                <div class="chat-body" id="chat-body" style="display: block;">
                     <div class="chat-messages d-flex flex-column pt-3">
                         <div class="message sent">
                             <div class="message-content">
@@ -216,8 +216,26 @@
                         </div>
     
                     </div>
-                      <!-- start table -->
-                    <div class=" d-none d-md-block rounded-3 bg-white shadow my-4">
+                     
+                    <div class="message-input">
+                        <div class="d-flex align-items-center">
+                            <input type="text" class="message-form-control flex-grow-1 me-2 text-black" placeholder="...כתוב הודעתך כאן">
+                            <button class="btn btn-sm me-2 chat-btn">
+                                <div><img src="/assets/images/feather-smile.svg" alt="smile icon"></div>
+                            </button>
+                            <button class="btn btn-sm me-2 chat-btn">
+                                <div><img src="/assets/images/attach-file.svg" alt="file icon"></div>
+                            </button>
+                            <button class="btn me-2 chat-sent-btn text-white align-items-center justify-content-center">
+                                <div><img src="/assets/images/feather-send.svg" alt="send icon"></div>
+                                <h6 class="mb-0 fw-normal d-lg-flex d-none">שלח</h6>
+                            </button>
+                        </div>
+                    </div>                    
+                </div>
+                <div class="chat-body-representative" id="chat-body-representative" style="display: none;">
+                     <!-- start table -->
+                     <div class=" d-none d-md-block rounded-3 bg-white shadow my-4">
                         <table class="table" >
                             <thead class="py-3">
                                 <tr class=" border border-0  boreder-secondary">
@@ -259,21 +277,6 @@
                         </div>
                     </div>
                     <!-- end responsive table-->
-                    <div class="message-input">
-                        <div class="d-flex align-items-center">
-                            <input type="text" class="message-form-control flex-grow-1 me-2 text-black" placeholder="...כתוב הודעתך כאן">
-                            <button class="btn btn-sm me-2 chat-btn">
-                                <div><img src="/assets/images/feather-smile.svg" alt="smile icon"></div>
-                            </button>
-                            <button class="btn btn-sm me-2 chat-btn">
-                                <div><img src="/assets/images/attach-file.svg" alt="file icon"></div>
-                            </button>
-                            <button class="btn me-2 chat-sent-btn text-white align-items-center justify-content-center">
-                                <div><img src="/assets/images/feather-send.svg" alt="send icon"></div>
-                                <h6 class="mb-0 fw-normal d-lg-flex d-none">שלח</h6>
-                            </button>
-                        </div>
-                    </div>                    
                 </div>
             </div>
         </div>

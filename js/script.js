@@ -10,31 +10,40 @@ document.addEventListener("DOMContentLoaded", function () {
 
       contactList.innerHTML = data
         .map(
-          (contact) => `
-                  <div class="contact-item d-flex align-items-center">
-                      <div class="flex-grow-1">
-                          <h6 class="mb-0 fw-bold">
-                              ${isHebrew ? contact.name_he : contact.name_en}
-                          </h6>
-                          <small class="text-muted">${contact.phone}</small>
-                      </div>
-                      <div class="position-relative">
-                          <img src="${contact.icon}" alt="icon">
-                          <span class="bg-black text-white px-1 rounded-pill position-absolute call-count">2</span>
-                      </div>
-                      <div class="vertical"></div>
-                      <div class="ms-auto text-end d-block convesation-day">
-                          <small class="text-muted d-block">
-                              ${isHebrew ? contact.day_he : contact.day_en}
-                          </small>
+          (contact, index) => `
+            <div class="contact-item d-flex align-items-center" data-index="${index}">
+              <div class="flex-grow-1">
+                  <h6 class="mb-0 fw-bold">
+                      ${isHebrew ? contact.name_he : contact.name_en}
+                  </h6>
+                  <small class="text-muted">${contact.phone}</small>
+              </div>
+              <div class="position-relative">
+                  <img src="${contact.icon}" alt="icon">
+                  <span class="bg-black text-white px-1 rounded-pill position-absolute call-count">2</span>
+              </div>
+              <div class="vertical"></div>
+              <div class="ms-auto text-end d-block convesation-day">
+                  <small class="text-muted d-block">
+                      ${isHebrew ? contact.day_he : contact.day_en}
+                  </small>
                           <small class="text-muted d-block">${
                             contact.time
                           }</small>
-                      </div>
-                  </div>
-              `
+              </div>
+            </div>
+        `
         )
         .join("");
+
+      // Add click events to each contact item
+      const items = contactList.querySelectorAll(".contact-item");
+      items.forEach(item => {
+        item.addEventListener("click", () => {
+          document.getElementById("chat-body-representative").style.display = "block";
+          document.getElementById("chat-body").style.display = "none";
+        });
+      });
     })
     .catch((error) => console.error("Error loading contacts:", error));
 });
