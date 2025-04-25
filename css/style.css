@@ -587,13 +587,3 @@ input[type="checkbox"]:checked {
   top: -30px;
   right: -5px;
 }
-
-.chat-body-representative {
-  display: none;
-}
-.show-representative .chat-body {
-  display: none;
-}
-.show-representative .chat-body-representative {
-  display: block;
-}
