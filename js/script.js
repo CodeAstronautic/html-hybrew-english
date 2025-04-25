@@ -485,7 +485,7 @@ document.addEventListener("DOMContentLoaded", function () {
             : "btn-outline-danger";
 
           return `
-          <tr class="border border-1 mx-3 align-middle">
+          <tr class="border-bottom align-middle">
             <td class="table-data lh-1">${item.searialNumber}</td>
             <td class="lh-1 fw-bold">${
               isHebrew ? item.name_he : item.name_en
