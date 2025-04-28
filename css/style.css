@@ -440,7 +440,7 @@ body {
 }
 
 .mh-603{
-  max-height: 603px !important;
+  max-height: 300px !important;
   scroll-behavior: smooth !important;
   scrollbar-width: thin !important;
 }
