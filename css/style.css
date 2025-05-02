@@ -3,6 +3,11 @@ body {
   height: 100vh;
 }
 
+.top-10{
+ top: 10% !important;
+}
+
+
 .thin-scrollbar::-webkit-scrollbar {
   height: 4px;
 }
