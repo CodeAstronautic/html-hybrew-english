@@ -35,7 +35,7 @@
         "depatment_he": "שיווק ומכירות",
         "mobile_no": "052-3442222",
         "various": "01/01/2025",
-        "Status": [{"Success_en" : "success", "Success_he": "הַצלָחָה", "Fail_he" : "לְהִכָּשֵׁל", "Fail_en" : "fail"}],
+        "Status": [{"Fail_he" : "לְהִכָּשֵׁל", "Fail_en" : "fail"}],
         "aria-controls": "collapseTwo",
         "data-bs-target": "#collapseTwo"
     },
@@ -75,7 +75,7 @@
         "depatment_he": "שיווק ומכירות",
         "mobile_no": "052-3442222",
         "various": "01/01/2025",
-        "Status": [{"Success_en" : "success", "Success_he": "הַצלָחָה", "Fail_he" : "לְהִכָּשֵׁל", "Fail_en" : "fail"}],
+        "Status": [{ "Fail_he" : "לְהִכָּשֵׁל", "Fail_en" : "fail"}],
         "aria-controls": "collapseFoure",
         "data-bs-target": "#collapseFoure"
     },
@@ -115,7 +115,7 @@
         "depatment_he": "שיווק ומכירות",
         "mobile_no": "052-3442222",
         "various": "01/01/2025",
-        "Status": [{"Success_en" : "success", "Success_he": "הַצלָחָה", "Fail_he" : "לְהִכָּשֵׁל", "Fail_en" : "fail"}],
+        "Status": [{ "Fail_he" : "לְהִכָּשֵׁל", "Fail_en" : "fail"}],
         "aria-controls": "collapseSix",
         "data-bs-target": "#collapseSix"
     }

@@ -12,22 +12,42 @@
     <div class="container">
         <div class="row justify-content-center align-items-center min-vh-100">
           <div class="col-12 col-sm-8 col-md-6 col-lg-4">
-            <div class="text-center mb-4">
+              <div class="text-center mb-4 ">
                 <img src="./assets/images/logo.svg" alt="Login Logo">
+               
               </div>
-            
-                <ul class="nav nav-tabs nav-justified"  role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="code-tab" data-bs-toggle="tab" data-bs-target="#code" type="button" role="tab" aria-controls="code" aria-selected="true">
-                            כניסה עם קוד
-                        </button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="password-tab" data-bs-toggle="tab" data-bs-target="#password" type="button" role="tab" aria-controls="password" aria-selected="false">
-                            כניסה עם סיסמה
-                        </button>
-                    </li>
-                </ul>
+              <!-- <ul class="nav nav-tabs nav-justified custom-tabs" role="tablist">
+                <li class="nav-item overflow-hidden" role="presentation">
+                  <button
+                    class="nav-link bg-transparent border border-0 rounded-0 "
+                    id="code-tab"
+                    data-bs-toggle="tab"
+                    data-bs-target="#code"
+                    type="button"
+                    role="tab"
+                    aria-controls="code"
+                    aria-selected="false">
+                    כניסה עם קוד
+                  </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button
+                    class="nav-link active bg-transparent"
+                    id="password-tab"
+                    data-bs-toggle="tab"
+                    data-bs-target="#password"
+                    type="button"
+                    role="tab"
+                    aria-controls="password"
+                    aria-selected="true">
+                    כניסה עם סיסמה
+                  </button>
+                </li>
+              </ul> -->
+              <div class="tabs">
+                <button class="tab active w-50">כניסה עם קוד</button>
+                <button class="tab  w-50">כניסה עם סיסמה</button>
+              </div>
          
             <div class="login-box p-4 border rounded-3 shadow-sm bg-white">
               <!-- Email -->

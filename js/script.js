@@ -47,9 +47,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Add click events to each contact item
       const items = contactList.querySelectorAll(".contact-item");
-      items.forEach(item => {
+      items.forEach((item) => {
         item.addEventListener("click", () => {
-          document.getElementById("chat-body-representative").style.display = "block";
+          document.getElementById("chat-body-representative").style.display =
+            "block";
           document.getElementById("chat-body").style.display = "none";
         });
       });
@@ -105,56 +106,65 @@ document.addEventListener("DOMContentLoaded", function () {
       //PhonBook data
       // Fetch phonebook modal (Hebrew/English)
       const phoneBook = isHebrew
-      ? "common/modal/phoneBook.html"
-      : "common/modal/phoneBook-en.html";
+        ? "common/modal/phoneBook.html"
+        : "common/modal/phoneBook-en.html";
       fetch(phoneBook)
-      .then((res) => res.text())
-      .then((html) => {
-        document.body.insertAdjacentHTML("beforeend", html);
-      })
-      .catch((error) => console.log("Error loading phonebook modal:", error));
+        .then((res) => res.text())
+        .then((html) => {
+          document.body.insertAdjacentHTML("beforeend", html);
+        })
+        .catch((error) => console.log("Error loading phonebook modal:", error));
 
       // Fetch phonebook data and apply filtering
       fetch("phonebookData.json")
-      .then((response) => {
-        if (!response.ok) throw new Error("Failed to fetch phonebookData.json");
-        return response.json();
-      })
-      .then((data) => {
-        let phonebookData = data;
-        const contactChatList = document.getElementById("phoneBookData");
-        const mobilePhoneBookData = document.getElementById("mobilephoneBookData");
+        .then((response) => {
+          if (!response.ok)
+            throw new Error("Failed to fetch phonebookData.json");
+          return response.json();
+        })
+        .then((data) => {
+          let phonebookData = data;
+          const contactChatList = document.getElementById("phoneBookData");
+          const mobilePhoneBookData = document.getElementById(
+            "mobilephoneBookData"
+          );
 
-        // Function to render desktop phonebook table
-        const renderPhoneBookTable = (data) => {
-          contactChatList.innerHTML = data
-            .map((item) => {
-              return `
+          // Function to render desktop phonebook table
+          const renderPhoneBookTable = (data) => {
+            contactChatList.innerHTML = data
+              .map((item) => {
+                return `
                 <tr class="border-bottom">
                   <td class="table-data fs-6 fw-bold">${item.Mobile}</td>
-                  <td class="fs-6 fw-bold">${isHebrew ? item.Customername_he : item.Customername_en}</td>
+                  <td class="fs-6 fw-bold">${
+                    isHebrew ? item.Customername_he : item.Customername_en
+                  }</td>
                   <td class="table-data">${item.Email}</td>
-                  <td class="table-data">${isHebrew ? item.Description_he : item.Description_en}</td>
+                  <td class="table-data">${
+                    isHebrew ? item.Description_he : item.Description_en
+                  }</td>
                   <td class="table-data">
                     <div class="d-flex align-items-center flex-wrap gap-4 gap-lg-3 my-2 my-lg-0">
-                      <i class="fas fa-comment-medical fa-lg" style="color: #11fd11;"></i>
+                      <img src="assets/images/chat+.svg" width="24px" height="24px" alt="edit icon">
                       <img src="assets/images/feather-edit.svg" width="18px" height="18px" alt="edit icon">
                       <i class="fa-solid fa-trash-can fa-lg" style="color: #D42359;"></i>
                     </div>
                   </td>
                 </tr>`;
-            })
-            .join("");
-        };
+              })
+              .join("");
+          };
 
-        // Function to render mobile phonebook data
-        const renderMobilePhoneBookData = (data) => {
-          mobilePhoneBookData.innerHTML = data
-            .map((item) => {
-              return `
+          // Function to render mobile phonebook data
+          const renderMobilePhoneBookData = (data) => {
+            mobilePhoneBookData.innerHTML = data
+              .map((item) => {
+                return `
                 <div class="accordion accordion-flush overflow-y-auto overflow-x-hidden mh-603" id="accordionFlushExample">
                   <div class="accordion-item my-1">
-                    <h2 class="accordion-header" id="${item["aria-labelledby"]}">
+                    <h2 class="accordion-header" id="${
+                      item["aria-labelledby"]
+                    }">
                       <button
                         class="accordion-button fs-6 fw-bold collapsed"
                         type="button"
@@ -163,24 +173,34 @@ document.addEventListener("DOMContentLoaded", function () {
                         aria-expanded="false"
                         aria-controls="${item["aria-controls"]}"
                       >
-                        ${isHebrew ? item.Customername_he : item.Customername_en}
+                        ${
+                          isHebrew ? item.Customername_he : item.Customername_en
+                        }
                       </button>
                     </h2>
-                    <div id="${item["aria-controls"]}" class="accordion-collapse collapse" aria-labelledby="${item["aria-labelledby"]}" data-bs-parent="#accordionFlushExample">
+                    <div id="${
+                      item["aria-controls"]
+                    }" class="accordion-collapse collapse" aria-labelledby="${
+                  item["aria-labelledby"]
+                }" data-bs-parent="#accordionFlushExample">
                       <div class="accordion-body">
                         <div class="row d-flex align-items-center">
                           <div class="col-6">
                             <div class="d-flex flex-column gap-2 justify-content-center">
                               <p class="mb-0">${item.Mobile}</p>
                               <p class="mb-0">${item.Email}</p>
-                              <p class="mb-0">${isHebrew ? item.Description_he : item.Description_en}</p>
+                              <p class="mb-0">${
+                                isHebrew
+                                  ? item.Description_he
+                                  : item.Description_en
+                              }</p>
                             </div>
                           </div>
                           <div class="col-6 text-end">
-                            <div class="d-flex flex-column align-items-end gap-4">
-                              <i class="fas fa-comment-medical fa-lg" style="color: #11fd11;"></i>
-                              <img src="assets/images/feather-edit.svg" width="18px" height="18px" alt="edit icon">
-                              <i class="fa-solid fa-trash-can fa-lg" style="color: #D42359;"></i>
+                            <div class="d-flex flex-column align-items-end pt-2" style="row-gap: 16px;">
+                              <img src="assets/images/chat+.svg" width="22" height="22" alt="chat icon">
+                              <img src="assets/images/feather-edit.svg" width="20" height="20" alt="edit icon">
+                              <i class="fa-solid fa-trash-can" style="color: #D42359; font-size: 20px;"></i>
                             </div>
                           </div>
                         </div>
@@ -188,30 +208,33 @@ document.addEventListener("DOMContentLoaded", function () {
                     </div>
                   </div>
                 </div>`;
-            })
-            .join("");
-        };
+              })
+              .join("");
+          };
 
-        renderPhoneBookTable(phonebookData);
-        renderMobilePhoneBookData(phonebookData);
+          renderPhoneBookTable(phonebookData);
+          renderMobilePhoneBookData(phonebookData);
 
-        // Search functionality
-        document.getElementById("searchButton").addEventListener("click", () => {
-          const input = document.getElementById("searchInput").value.toLowerCase();
-          const filtered = phonebookData.filter(
-            (item) =>
-              item.Mobile.includes(input) ||
-              item.Customername_en.toLowerCase().includes(input) ||
-              item.Customername_he.toLowerCase().includes(input) ||
-              item.Description_en.toLowerCase().includes(input) ||
-              item.Description_he.toLowerCase().includes(input)
-          );
-          renderPhoneBookTable(filtered);
-          renderMobilePhoneBookData(filtered);
-        });
-      })
-      .catch((error) => console.log("Error loading phonebook data:", error));
-
+          // Search functionality
+          document
+            .getElementById("searchButton")
+            .addEventListener("click", () => {
+              const input = document
+                .getElementById("searchInput")
+                .value.toLowerCase();
+              const filtered = phonebookData.filter(
+                (item) =>
+                  item.Mobile.includes(input) ||
+                  item.Customername_en.toLowerCase().includes(input) ||
+                  item.Customername_he.toLowerCase().includes(input) ||
+                  item.Description_en.toLowerCase().includes(input) ||
+                  item.Description_he.toLowerCase().includes(input)
+              );
+              renderPhoneBookTable(filtered);
+              renderMobilePhoneBookData(filtered);
+            });
+        })
+        .catch((error) => console.log("Error loading phonebook data:", error));
 
       // User modal path
       const userdataPath = isHebrew
@@ -367,63 +390,181 @@ document.addEventListener("DOMContentLoaded", function () {
       icon: "awesome-whatsapp.svg",
       label: { en: "Ziv Shiffer", he: "זיו שיפר" },
       subText: { en: "053-3028400", he: "053-3028400" },
+      modalId: "user-info-modal",
     },
     {
       icon: "feather-home.svg",
       label: { en: "System Status", he: "סטאטוס מערכת" },
+      modalId: "modal-status",
     },
-    { icon: "feather-users.svg", label: { en: "Contacts", he: "אנשי קשר" } },
+    {
+      icon: "feather-users.svg",
+      label: { en: "Contacts", he: "אנשי קשר" },
+      modalId: "modal-contacts",
+    },
     {
       icon: "awesome-reply.svg",
       label: { en: "Auto Reply", he: "מענה אוטומטי" },
+      modalId: "modal-autoreplay",
     },
-    { icon: "headphone.svg", label: { en: "Representatives", he: "נציגים" } },
-    { icon: "feather-tag.svg", label: { en: "Tags", he: "תיוגים" } },
-    { icon: "feather-layers.svg", label: { en: "Departments", he: "מחלקות" } },
+    {
+      icon: "headphone.svg",
+      label: { en: "Representatives", he: "נציגים" },
+      modalId: "modal-representatives",
+    },
+    {
+      icon: "feather-tag.svg",
+      label: { en: "Tags", he: "תיוגים" },
+      modalId: "modal-tags",
+    },
+    {
+      icon: "feather-layers.svg",
+      label: { en: "Departments", he: "מחלקות" },
+      modalId: "modal-departments",
+    },
     {
       icon: "feather-phone.svg",
       label: { en: "Phonebook", he: "ספר טלפונים" },
+      modalId: "modal-phoneBook",
     },
-    { icon: "feather-bell.svg", label: { en: "Reminders", he: "תזכורות" } },
+    {
+      icon: "feather-bell.svg",
+      label: { en: "Reminders", he: "תזכורות" },
+      modalId: "modal-reminders",
+    },
     {
       icon: "feather-user.svg",
       label: { en: "User Settings", he: "הגדרות משתמש" },
+      modalId: "modal-userData",
     },
   ];
 
   const menuList = document.getElementById("menu-list");
-
   const htmlLang = document.documentElement.lang || "en";
   const isHebrew = htmlLang.startsWith("he");
 
   menuData.forEach((item, index) => {
-    let listItem = `
-      <li class="list-group-item d-flex align-items-center gap-3 p-4 border-0  menu_list ${
-        index === 0 ? "sticky-header" : ""
-      }">
-          <img src="/assets/images/${item.icon}" alt="${item.label.en} icon">
-          <div>
-              <small class="text-black">${
-                isHebrew ? item.label.he : item.label.en
-              }</small>
-              ${
-                item.subText
-                  ? `<br><small class="text-black">${
-                      isHebrew ? item.subText.he : item.subText.en
-                    }</small>`
-                  : " "
-              }
-          </div>
+    const listItem = document.createElement("li");
+    listItem.className = `list-group-item d-flex align-items-center gap-3 p-4 border-0 menu_list ${
+      index === 0 ? "sticky-header" : ""
+    }`;
 
-      </li>
-      ${
-        index < menuData.length - 1
-          ? '<li class="dropdown-divider m-0"></li>'
-          : ""
-      }
+    listItem.innerHTML = `
+      <img src="/assets/images/${item.icon}" alt="${item.label.en} icon">
+      <div>
+        <small class="text-black">${
+          isHebrew ? item.label.he : item.label.en
+        }</small>
+        ${
+          item.subText
+            ? `<br><small class="text-black">${
+                isHebrew ? item.subText.he : item.subText.en
+              }</small>`
+            : ""
+        }
+      </div>
     `;
-    menuList.innerHTML += listItem;
+
+    // Click handler for opening modals dynamically
+    listItem.addEventListener("click", function () {
+      const modalId = item.modalId || `modal-${index}`;
+      const modalElement = document.getElementById(modalId);
+
+      if (modalElement) {
+        const modal = new bootstrap.Modal(modalElement);
+        modal.show();
+      } else {
+        // Dynamically fetch modal HTML and append to body
+        const modalPath = isHebrew
+          ? `common/modal/${modalId}.html`
+          : `common/modal/${modalId}-en.html`;
+
+        fetch(modalPath)
+          .then((res) => res.text())
+          .then((html) => {
+            document.body.insertAdjacentHTML("beforeend", html);
+            const newModal = new bootstrap.Modal(
+              document.getElementById(modalId)
+            );
+            newModal.show();
+          })
+          .catch((error) =>
+            console.error("Error loading modal:", modalPath, error)
+          );
+      }
+    });
+
+    menuList.appendChild(listItem);
+
+    if (index < menuData.length - 1) {
+      const divider = document.createElement("li");
+      divider.className = "dropdown-divider m-0";
+      menuList.appendChild(divider);
+    }
   });
+  // menuData.forEach((item, index) => {
+  //   const listItem = document.createElement("li");
+  //   listItem.className = `list-group-item d-flex align-items-center gap-3 p-4 border-0 menu_list ${
+  //     index === 0 ? "sticky-header" : ""
+  //   }`;
+
+  //   listItem.innerHTML = `
+  //     <span class="notification-dot position-absolute top-20 end-0 translate-middle p-1 bg-danger border border-light rounded-circle">
+  //       <span class="visually-hidden">New alerts</span>
+  //     </span>
+  //     <img src="/assets/images/${item.icon}" alt="${item.label.en} icon">
+  //     <div>
+  //       <small class="text-black">${isHebrew ? item.label.he : item.label.en}</small>
+  //       ${
+  //         item.subText
+  //           ? `<br><small class="text-black">${
+  //               isHebrew ? item.subText.he : item.subText.en
+  //             }</small>`
+  //           : ""
+  //       }
+  //     </div>
+  //   `;
+
+  //   listItem.addEventListener("click", function () {
+  //     document.querySelectorAll(".menu_list").forEach((el) =>
+  //       el.classList.remove("active")
+  //     );
+  //     this.classList.add("active");
+
+  //     const modalId = item.modalId || `modal-${index}`;
+  //     const modalElement = document.getElementById(modalId);
+
+  //     if (modalElement) {
+  //       const modal = new bootstrap.Modal(modalElement);
+  //       modal.show();
+  //     } else {
+  //       const modalPath = isHebrew
+  //         ? `common/modal/${modalId}.html`
+  //         : `common/modal/${modalId}-en.html`;
+
+  //       fetch(modalPath)
+  //         .then((res) => res.text())
+  //         .then((html) => {
+  //           document.body.insertAdjacentHTML("beforeend", html);
+  //           const newModal = new bootstrap.Modal(
+  //             document.getElementById(modalId)
+  //           );
+  //           newModal.show();
+  //         })
+  //         .catch((error) =>
+  //           console.error("Error loading modal:", modalPath, error)
+  //         );
+  //     }
+  //   });
+
+  //   menuList.appendChild(listItem);
+
+  //   if (index < menuData.length - 1) {
+  //     const divider = document.createElement("li");
+  //     divider.className = "dropdown-divider m-0";
+  //     menuList.appendChild(divider);
+  //   }
+  // });
 });
 
 // Mobile Chat Sidebar List
@@ -438,42 +579,48 @@ document.addEventListener("DOMContentLoaded", function () {
       contactChatList.innerHTML = data
         .map(
           (contact) => `
-                <div class="contact-item d-flex position-relative align-items-center ${
-                  isHebrew ? "text-end" : ""
-                }">
-                
-                    <div class="flex-grow-1">
-                    
-                        <h6 class="mb-0 fw-bold">${
-                          isHebrew ? contact.name_he : contact.name_en
-                        }</h6>
-                        <small class="text-muted">${contact.phone}</small>
-                    </div>
-                    <div>
-                        <div class="position-relative">
-                        <span class="position-absolute top-25 start-0 translate-middle p-1 bg-danger border border-light rounded-circle">
-                <span class="visually-hidden">New alerts</span>
-              </span>
-                            <img src="${contact.icon}" alt="icon">
-                            <span class="bg-black text-white px-1 rounded-pill position-absolute call-count">2</span>
-                        </div>
-                    </div>
-                    <div class="vertical"></div>
-                    <div class="ms-auto text-end d-block convesation-day">
-                        <small class="text-muted d-block">${
-                          isHebrew ? contact.day_he : contact.day_en
-                        }</small>
-                        <small class="text-muted d-block">${
-                          contact.time
-                        }</small>
-                    </div>
+            <div class="contact-item d-flex position-relative align-items-center ${
+              isHebrew ? "text-end" : ""
+            }">
+              <div class="flex-grow-1">
+                <h6 class="mb-0 fw-bold">${
+                  isHebrew ? contact.name_he : contact.name_en
+                }</h6>
+                <small class="text-muted">${contact.phone}</small>
+              </div>
+              <div>
+                <div class="position-relative">
+                  <span class="position-absolute top-25 start-0 translate-middle p-1 bg-danger border border-light rounded-circle">
+                    <span class="visually-hidden">New alerts</span>
+                  </span>
+                  <img src="${contact.icon}" alt="icon">
+                  <span class="bg-black text-white px-1 rounded-pill position-absolute call-count">2</span>
                 </div>
-            `
+              </div>
+              <div class="vertical"></div>
+              <div class="ms-auto text-end d-block convesation-day">
+                <small class="text-muted d-block">${
+                  isHebrew ? contact.day_he : contact.day_en
+                }</small>
+                <small class="text-muted d-block">${contact.time}</small>
+              </div>
+            </div>
+          `
         )
         .join("");
+
+      // Add event listeners after rendering
+      const items = contactChatList.querySelectorAll(".contact-item");
+      items.forEach((item) => {
+        item.addEventListener("click", () => {
+          document.getElementById("chat-body-representative").style.display = "block";
+          document.getElementById("chat-body").style.display = "none";
+        });
+      });
     })
     .catch((error) => console.error("Error loading contacts:", error));
 });
+
 
 // Table Respresentative
 document.addEventListener("DOMContentLoaded", function () {
@@ -486,19 +633,27 @@ document.addEventListener("DOMContentLoaded", function () {
       const contactChatList = document.getElementById("representmenu-data");
       contactChatList.innerHTML = data
         .map((item) => {
-          const statusObj = item.Status[0]; // your status is an array with one object
-          const isSuccess = Object.values(statusObj).includes("success");
+          const statusObj = item.Status[0]; // assuming Status is an array with a single object
+          const statusValue = Object.values(statusObj).find(
+            (val) => val === "success" || val === "fail"
+          );
+
+          const isSuccess = statusValue === "success";
+          const isFail = statusValue === "fail";
+
           const statusLabel = isHebrew
             ? isSuccess
               ? statusObj.Success_he
               : statusObj.Fail_he
-            : isSuccess
-            ? statusObj.Success_en
-            : statusObj.Fail_en;
+            : isFail
+            ? statusObj.Fail_en
+            : statusObj.Success_en;
+
           const btnClass = isSuccess
             ? "btn-outline-success"
-            : "btn-outline-danger";
-
+            : isFail
+            ? "btn-outline-danger"
+            : "btn-outline-secondary";
           return `
           <tr class="border-bottom align-middle">
             <td class="table-data lh-1">${item.searialNumber}</td>
@@ -600,8 +755,8 @@ document.addEventListener("DOMContentLoaded", function () {
       
                   <div class=" d-flex flex-wrap justify-content-between my-2">
                       <div class="d-flex align-items-center gap-3">
-                          <button type="button" class="btn ${btnClass} table-data lh-1">${statusLabel}</button>
-                          <p class="mb-0 text-data">${item.various} : ${
+                        <button type="button" class="btn ${btnClass} table-data lh-1">${statusLabel}</button>
+                        <p class="mb-0 text-data">${item.various} : ${
             isHebrew ? item.varies_he : item.varies_en
           }</p>
                       </div>
