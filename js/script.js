@@ -739,10 +739,10 @@ document.addEventListener("DOMContentLoaded", function () {
                      }</p>
                   </div>
       
-                  <div class="d-flex flex-wrap justify-content-between align-items-center gap-3">
-                      <p class="mb-0 table-data text-nowrap">14 :${
+                  <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
+                      <p class="mb-0 table-data fs-5 text-nowrap">${
                         isHebrew ? item.extention_he : item.extention_en
-                      }</p>
+                      }: 14</p>
                       <span>|</span>
                       <p class="mb-0 table-data text-nowrap">${
                         isHebrew ? item.depatment_he : item.depatment_en
@@ -761,7 +761,7 @@ document.addEventListener("DOMContentLoaded", function () {
           }</p>
                       </div>
                       <div class="d-flex align-items-center gap-2">
-                          <img src="assets/images/feather-edit.svg" alt="edit icon">
+                          <img src="assets/images/feather-edit.svg" alt="edit icon" width="20px" height="20px">
                           <i class="fa-solid fa-chevron-up"></i>
                       </div>
                   </div>

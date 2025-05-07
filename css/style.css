@@ -9,6 +9,9 @@ body {
   border-bottom: 2px solid #f3f3f3;
 }
 
+.fs_15{font-size: 15px !important;}
+.fs_18{font-size: 18px !important;}
+.width_15{width: 15%;}
 .tab {
   padding: 10px 20px;
   cursor: pointer;
@@ -316,7 +319,7 @@ body {
 .contact-list {
   margin-top: 22px;
   padding-left: 9px;
-  height: calc(100vh - 363px);
+  height: calc(100vh - 410px);
   gap: 5px;
 }
 
@@ -559,6 +562,7 @@ input[type="checkbox"]:checked {
 .custom-btn, .custom-btn2 {
   padding: 10px;
 }
+
 }
 @media (max-width: 1024px) {
   .header-btn .nav-link {
@@ -666,5 +670,9 @@ input[type="checkbox"]:checked {
 [lang='en'] .custom-close-button {
   top: -30px;
   right: -5px;
+}
+
+[lang = "heb"] .width_15 {
+  width: 8%;
 }
 

@@ -44,15 +44,28 @@
                             <button class="custom-btn2">השיחות שלי</button>
                         </div>
                     </div>
-                    <div class="contact-list overflow-auto custom-scrollbar d-flex flex-column" id="contactList">
+                    <div class="contact-list overflow-auto custom-scrollbar my-0 d-flex flex-column" id="contactList">
                         <!-- Contacts will be injected here -->
                     </div>
- 
-                    <div class="pt-3">
-                        <button class="custom-btn rounded-3">
-                            <i class="fas fa-plus me-1"></i> שיחה חדשה
+  
+                    <div class="py-1 d-lg-block">
+                        <p class="mb-0 fw-normal fs_18 lh-0">הגדרות העסק</p>
+                      
+                        <div class="form-check form-switch d-flex align-items-center my-1">
+                          <input
+                            class="form-check-input rounded-pill width_15 shadow-none mx-2"
+                            type="checkbox"
+                            id="rememberToggle"
+                          />
+                          <label class="form-check-label fs_15 fw-normal lh-1 mb-0" for="rememberToggle">
+                            התחל כל הודעה בשם הנציג
+                          </label>
+                        </div>
+                      
+                        <button class="custom-btn rounded-3 justify-content-center d-flex align-items-center px-3 py-2">
+                          <i class="fas fa-plus me-2"></i> שיחה חדשה
                         </button>
-                    </div>
+                      </div>
                 </div>
             </div>
             <div class="col-lg-9 col-12 p-0 d-flex flex-column">
@@ -231,7 +244,22 @@
                                 <h6 class="mb-0 fw-normal d-lg-flex d-none">שלח</h6>
                             </button>
                         </div>
-                    </div>                    
+                    </div> 
+                    
+                    <div class="py-1 d-lg-none bg-white p-2">
+                        <p class="mb-0 fw-normal fs_18 lh-0">הגדרות העסק</p>
+                      
+                        <div class="form-check form-switch d-flex align-items-center">
+                          <input
+                            class="form-check-input rounded-pill  shadow-none mx-2"
+                            type="checkbox"
+                            id="rememberToggle"
+                            style="width: 30px;"
+                          />
+                          <label class="form-check-label fs_15 fw-normal  mb-0" for="rememberToggle">
+                            התחל כל הודעה בשם הנציג
+                          </label>
+                        </div>
                 </div>
                 <div class="chat-body-representative" id="chat-body-representative" style="display: none;">
                     <div class="d-flex align-item-center gap-4 m-3">
