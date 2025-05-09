@@ -715,7 +715,7 @@ document.addEventListener("DOMContentLoaded", function () {
               }" aria-expanded="true"  aria-controls="${item["aria-controls"]}">
                  <div class="d-flex align-items-center gap-3">
                       <span class="table-data">${item.searialNumber}</span>
-                      <span>|</span>
+                      <span class="">|</span>
                       <p class="mb-0 fw-semibold fs-6">${
                         isHebrew ? item.name_he : item.name_en
                       }</p>
